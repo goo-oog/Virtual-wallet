@@ -1,5 +1,9 @@
 <?php
+declare(strict_types=1);
 
+use App\Http\Controllers\App\HomeController;
+use App\Http\Controllers\App\TransactionsController;
+use App\Http\Controllers\App\WalletsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +17,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])
+    ->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/wallet', [WalletsController::class, 'show'])
+    ->middleware(['auth']);
+
+Route::post('/wallet-create', [WalletsController::class, 'create'])
+    ->middleware(['auth']);
+
+Route::post('/wallet-rename', [WalletsController::class, 'rename'])
+    ->middleware(['auth']);
+
+Route::post('/wallet-delete', [WalletsController::class, 'delete'])
+    ->middleware(['auth']);
+
+Route::post('/transaction-add', [TransactionsController::class, 'add'])
+    ->middleware(['auth']);
+
+Route::post('/transaction-fraudulent', [TransactionsController::class, 'toggleFraudulent'])
+    ->middleware(['auth']);
+
+Route::post('/transaction-delete', [TransactionsController::class, 'delete'])
+    ->middleware(['auth']);
+
+require __DIR__ . '/auth.php';
