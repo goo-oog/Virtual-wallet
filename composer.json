@@ -1,8 +1,19 @@
 {
-    "name": "laravel/laravel",
+    "name": "gints/virtual_wallet",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Virtual Wallet",
+    "authors": [
+        {
+            "name": "Gints Ozolins",
+            "email": "gints.ozolins@inbox.lv",
+            "homepage": "https://github.com/goo-oog",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "finance",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.4",

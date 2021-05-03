@@ -21,7 +21,8 @@ class WalletsController extends Controller
         ]);
         return view('wallet', [
             'wallet' => Wallet::where('id', $request->input('id'))->first(),
-            'transactions' => Transaction::where('wallet_id', $request->input('id'))->get(),
+            'transactions' => Transaction::where('wallet_id', $request->input('id'))
+                ->orderByDesc('created_at')->get(),
             'sumIncoming' => Transaction::where('amount', '>', 0)
                 ->where('wallet_id', $request->input('id'))->sum('amount'),
             'sumOutgoing' => Transaction::where('amount', '<', 0)
@@ -37,7 +38,7 @@ class WalletsController extends Controller
     public function create(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255']
+            'name' => ['required', 'max:32']
         ]);
         Wallet::create([
             'user_id' => Auth::id(),
@@ -58,7 +59,7 @@ class WalletsController extends Controller
     {
         $request->validate([
             'id' => ['required', Rule::exists('wallets')->where('user_id', Auth::id())],
-            'name' => ['required', 'max:255']
+            'name' => ['required', 'max:32']
         ]);
         Wallet::where(['id' => $request->input('id')])
             ->update(['name' => $request->input('name')]);
@@ -79,6 +80,7 @@ class WalletsController extends Controller
             'id' => ['required', Rule::exists('wallets')->where('user_id', Auth::id())]
         ]);
         Wallet::where(['id' => $request->input('id')])->delete();
+        Transaction::where(['wallet_id' => $request->input('id')])->delete();
         return redirect('/dashboard');
     }
 }

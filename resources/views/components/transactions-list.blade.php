@@ -10,9 +10,10 @@
             <div class="w-32 text-right whitespace-nowrap">{{sprintf('%0.2f €',$transaction->amount/100)}}</div>
         </div>
         <div class="flex space-x-4 items-end">
-            <form method="post" action="/transaction-fraudulent"
+            <form method="post" action="/transaction/fraudulent"
                   class="text-center text-sm">
                 @csrf
+                <input type="hidden" name="_method" value="patch">
                 <input type="hidden" name="id" value="{{$transaction->id}}">
                 <input type="hidden" name="wallet_id" value="{{$transaction->wallet_id}}">
                 <input type="submit"
@@ -21,7 +22,7 @@
                               'hover:border-green-600 hover:text-green-600 w-20 bg-transparent hover:bg-green-50 border rounded border-gray-400':
                               'hover:border-red-500 hover:text-red-500 w-20 bg-transparent border rounded border-gray-400'}}">
             </form>
-            <form method="get" action="/transaction-delete" class="text-center text-sm">
+            <form method="get" action="/transaction/show-form/delete" class="text-center text-sm">
                 @csrf
                 <input type="hidden" name="id" value="{{$transaction->id}}">
                 <input type="hidden" name="wallet_id" value="{{$transaction->wallet_id}}">

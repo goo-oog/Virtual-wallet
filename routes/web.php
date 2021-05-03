@@ -19,43 +19,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AppController::class, 'home']);
 
-Route::get('/dashboard', [AppController::class, 'dashboard'])
-    ->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AppController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/wallet', [WalletsController::class, 'show'])
-    ->middleware(['auth']);
+    Route::prefix('wallet')->group(function () {
+        Route::get('', [WalletsController::class, 'show']);
+        Route::post('create', [WalletsController::class, 'create']);
+        Route::patch('rename', [WalletsController::class, 'rename']);
+        Route::delete('delete', [WalletsController::class, 'delete']);
+        Route::prefix('show-form')->group(function () {
+            Route::get('create', [WalletsController::class, 'showCreateForm']);
+            Route::get('rename', [WalletsController::class, 'showRenameForm']);
+            Route::get('delete', [WalletsController::class, 'showDeleteForm']);
+        });
+    });
 
-Route::get('/wallet-create', [WalletsController::class, 'showCreateForm'])
-    ->middleware(['auth']);
-
-Route::post('/wallet-create', [WalletsController::class, 'create'])
-    ->middleware(['auth']);
-
-Route::get('/wallet-rename', [WalletsController::class, 'showRenameForm'])
-    ->middleware(['auth']);
-
-Route::post('/wallet-rename', [WalletsController::class, 'rename'])
-    ->middleware(['auth']);
-
-Route::get('/wallet-delete', [WalletsController::class, 'showDeleteForm'])
-    ->middleware(['auth']);
-
-Route::post('/wallet-delete', [WalletsController::class, 'delete'])
-    ->middleware(['auth']);
-
-Route::get('/transaction-add', [TransactionsController::class, 'showAddForm'])
-    ->middleware(['auth']);
-
-Route::post('/transaction-add', [TransactionsController::class, 'add'])
-    ->middleware(['auth']);
-
-Route::post('/transaction-fraudulent', [TransactionsController::class, 'toggleFraudulent'])
-    ->middleware(['auth']);
-
-Route::get('/transaction-delete', [TransactionsController::class, 'showDeleteForm'])
-    ->middleware(['auth']);
-
-Route::post('/transaction-delete', [TransactionsController::class, 'delete'])
-    ->middleware(['auth']);
+    Route::prefix('transaction')->group(function () {
+        Route::post('add', [TransactionsController::class, 'add']);
+        Route::patch('fraudulent', [TransactionsController::class, 'toggleFraudulent']);
+        Route::delete('delete', [TransactionsController::class, 'delete']);
+        Route::prefix('show-form')->group(function () {
+            Route::get('add', [TransactionsController::class, 'showAddForm']);
+            Route::get('delete', [TransactionsController::class, 'showDeleteForm']);
+        });
+    });
+});
 
 require __DIR__ . '/auth.php';

@@ -29,7 +29,7 @@ class TransactionsController extends Controller
         $request->merge(['amount' => str_replace(',', '.', $request->input('amount'))]);
         $request->validate([
             'wallet_id' => ['required', Rule::exists('wallets', 'id')->where('user_id', Auth::id())],
-            'description' => ['required', 'max:255'],
+            'description' => ['required', 'max:64'],
             'amount' => ['required', 'numeric', 'not_in:0']
         ]);
         Transaction::create([

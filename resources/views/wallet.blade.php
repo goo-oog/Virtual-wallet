@@ -10,7 +10,7 @@
                 <span class="{{$sumIncoming+$sumOutgoing>=0?'text-green-500':'text-red-500'}}">
                     {{sprintf('%0.2f €',($sumIncoming+$sumOutgoing)/100)}}</span>
             </p>
-            <form method="get" action="/transaction-add">
+            <form method="get" action="/transaction/show-form/add">
                 @csrf
                 <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
                 <input type="submit" value="Add transaction"

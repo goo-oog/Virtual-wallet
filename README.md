@@ -1,62 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<div align="center" style="margin-top: 20px">
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Virtual Wallet
 
-## About Laravel
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35pt" height="35pt" viewBox="0 0 35 35" version="1.1">
+     <g id="surface1">
+          <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,69.019608%,21.568627%);fill-opacity:1;" d="M 3.417969 33.734375 C 1.535156 33.734375 0 32.203125 0 30.316406 L 0 22.113281 C 0 20.230469 1.535156 18.695312 3.417969 18.695312 C 5.300781 18.695312 6.835938 20.230469 6.835938 22.113281 L 6.835938 30.316406 C 6.835938 32.203125 5.300781 33.734375 3.417969 33.734375 Z M 3.417969 33.734375 "/>
+          <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,43.137255%,21.568627%);fill-opacity:1;" d="M 22.195312 33.734375 C 20.308594 33.734375 18.777344 32.203125 18.777344 30.316406 L 18.777344 26.214844 C 18.777344 24.332031 20.308594 22.796875 22.195312 22.796875 C 24.078125 22.796875 25.613281 24.332031 25.613281 26.214844 L 25.613281 30.316406 C 25.613281 32.203125 24.078125 33.734375 22.195312 33.734375 Z M 22.195312 33.734375 "/>
+          <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,43.137255%,21.568627%);fill-opacity:1;" d="M 22.195312 20.746094 C 20.308594 20.746094 18.777344 19.214844 18.777344 17.328125 L 18.777344 9.125 C 18.777344 7.242188 20.308594 5.707031 22.195312 5.707031 C 24.078125 5.707031 25.613281 7.242188 25.613281 9.125 L 25.613281 17.328125 C 25.613281 19.214844 24.078125 20.746094 22.195312 20.746094 Z M 22.195312 20.746094 "/>
+          <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,56.470588%,21.568627%);fill-opacity:1;" d="M 31.582031 33.734375 C 29.699219 33.734375 28.164062 32.203125 28.164062 30.316406 L 28.164062 19.722656 C 28.164062 17.835938 29.699219 16.304688 31.582031 16.304688 C 33.464844 16.304688 35 17.835938 35 19.722656 L 35 30.316406 C 35 32.203125 33.464844 33.734375 31.582031 33.734375 Z M 31.582031 33.734375 "/>
+          <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,29.411765%,21.568627%);fill-opacity:1;" d="M 12.804688 33.734375 C 10.921875 33.734375 9.386719 32.203125 9.386719 30.316406 L 9.386719 4.683594 C 9.386719 2.796875 10.921875 1.265625 12.804688 1.265625 C 14.691406 1.265625 16.222656 2.796875 16.222656 4.683594 L 16.222656 30.316406 C 16.222656 32.203125 14.691406 33.734375 12.804688 33.734375 Z M 12.804688 33.734375 "/>
+     </g>
+</svg>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Manage virtual wallets, view balance by transaction type, add and handle transactions. Application features full scale
+authentication powered by Laravel Breeze. And, of course, created with Laravel.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Application also automatically adjusts content to match different screen sizes, being it big monitor or small cell
+phone.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img src="https://www.dropbox.com/s/wcl23mrql00y3fh/1.png?raw=1" width="600px" alt="large screen">
+<img src="https://www.dropbox.com/s/5d4a779kzy8jeyl/2.png?raw=1" width="300px" alt="phone screen">
