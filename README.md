@@ -1,7 +1,7 @@
 # Virtual Wallet
 
 Manage virtual wallets, view balance by transaction type, add and handle transactions. Application features full scale
-authentication powered by Laravel Breeze. And, of course, created with Laravel.
+authentication powered by Laravel Breeze. And, of course, it is created with Laravel.
 
 Application also automatically adjusts content to match different screen sizes, being it big monitor or small cell
 phone.

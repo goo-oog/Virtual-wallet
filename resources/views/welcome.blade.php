@@ -44,7 +44,8 @@
         <div class="mt-16 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg p-6">
             <div class="mt-2 text-gray-600 text-justify dark:text-gray-400 text-sm">
                 Manage virtual wallets, view balance by transaction type, add and handle transactions. Application
-                features full scale authentication powered by Laravel Breeze. And, of course, created with Laravel.
+                features full scale authentication powered by Laravel Breeze. And, of course, it is created with
+                Laravel.
             </div>
         </div>
     </div>
