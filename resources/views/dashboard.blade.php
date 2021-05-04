@@ -18,7 +18,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-gray-800 font-semibold text-xl pb-3">Virtual wallets</h2>
                     @foreach($wallets as $wallet)
-                        <div class="border-t border-gray-400 pb-3">
+                        <div class="border-t border-gray-400 pb-3 hover:bg-yellow-50">
                             <a href="/wallet?id={{$wallet->id}}">
                                 <div class="flex p-2 space-x-4 xs:flex-wrap sm:flex-nowrap xs:justify-end sm:justify-between">
                                     <p class="xs:w-full sm:w-96">{{$wallet->name}}</p>

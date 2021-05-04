@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\App;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\Wallet;
 use Auth;

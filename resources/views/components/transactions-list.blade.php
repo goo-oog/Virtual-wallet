@@ -3,7 +3,7 @@
         <div class="text-xs text-white text-center bg-red-400">Fraudulent</div>
     @endif
     <div class="flex xs:flex-wrap md:flex-nowrap xs:justify-end md:justify-between md:space-x-8 lg:space-x-24 sm:space-y-4 md:space-y-0 p-2
-    @if($transaction->is_fraudulent) bg-red-100 @endif">
+        @if($transaction->is_fraudulent) bg-red-100 @else hover:bg-yellow-50 @endif">
         <div class="flex justify-between xs:w-full space-x-8">
             <div class="w-44 sm:whitespace-nowrap">{{$transaction->created_at->format('d.m.Y H:i')}}</div>
             <div class="w-full">{{$transaction->description}}</div>

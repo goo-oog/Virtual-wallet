@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Controllers\App\AppController;
-use App\Http\Controllers\App\TransactionsController;
-use App\Http\Controllers\App\WalletsController;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\WalletsController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('wallet_id');
+            $table->foreignId('wallet_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->bigInteger('amount');
             $table->boolean('is_fraudulent')->default(false);
