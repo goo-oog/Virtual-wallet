@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
-use App\Models\Wallet;
+use App\Models\User;
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -17,11 +17,14 @@ class WalletAuthorizeIdNameRequest extends FormRequest
      */
     public function authorize(Request $request)
     {
-        if (Wallet::where('id', $request->input('id'))
-            ->where('user_id', Auth::id())->exists()) {
-            return true;
-        }
-        return false;
+        $user = User::find(Auth::id());
+        $wallet = $user->wallets()->findOrFail($request->input('id'));
+        return $wallet->exists();
+//        if (Wallet::where('id', $request->input('id'))
+//            ->where('user_id', Auth::id())->exists()) {
+//            return true;
+//        }
+//        return false;
     }
 
     /**

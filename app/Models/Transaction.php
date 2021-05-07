@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property int $is_fraudulent
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read Wallet $wallet
  * @method static Builder|Transaction newModelQuery()
  * @method static Builder|Transaction newQuery()
  * @method static Builder|Transaction query()
@@ -41,4 +42,9 @@ class Transaction extends Model
         'amount',
         'is_fraudulent'
     ];
+
+    public function wallet()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
 }

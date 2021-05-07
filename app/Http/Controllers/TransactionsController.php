@@ -45,7 +45,7 @@ class TransactionsController extends Controller
             'id' => ['required', Rule::exists('transactions')->where('wallet_id', $request->input('wallet_id'))],
             'wallet_id' => ['required', Rule::exists('wallets', 'id')->where('user_id', Auth::id())]
         ]);
-        $transaction = Transaction::where(['id' => $request->input('id')])->firstOrFail();
+        $transaction = Transaction::find($request->input('id'));
         $transaction->update(['is_fraudulent' => !$transaction->is_fraudulent]);
         return redirect('/wallet?id=' . $transaction->wallet_id);
     }
@@ -68,7 +68,7 @@ class TransactionsController extends Controller
             'id' => ['required', Rule::exists('transactions')->where('wallet_id', $request->input('wallet_id'))],
             'wallet_id' => ['required', Rule::exists('wallets', 'id')->where('user_id', Auth::id())]
         ]);
-        $transaction = Transaction::where(['id' => $request->input('id')])->firstOrFail();
+        $transaction = Transaction::find($request->input('id'));
         $transaction->delete();
         return redirect('/wallet?id=' . $transaction->wallet_id);
     }

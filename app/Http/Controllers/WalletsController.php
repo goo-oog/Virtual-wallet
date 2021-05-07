@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WalletAuthorizeIdRequest;
 use App\Http\Requests\WalletAuthorizeIdNameRequest;
-use App\Models\Transaction;
 use App\Models\Wallet;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -17,13 +16,12 @@ class WalletsController extends Controller
     public function show(WalletAuthorizeIdRequest $authorizeRequest): View
     {
         $id = $authorizeRequest->validated()['id'];
+        $wallet = Wallet::find($id);
         return view('wallet', [
-            'wallet' => Wallet::where('id', $id)->first(),
-            'transactions' => Transaction::where('wallet_id', $id)->orderByDesc('created_at')->get(),
-            'sumIncoming' => Transaction::where('amount', '>', 0)
-                ->where('wallet_id', $id)->sum('amount'),
-            'sumOutgoing' => Transaction::where('amount', '<', 0)
-                ->where('wallet_id', $id)->sum('amount')
+            'wallet' => $wallet,
+            'transactions' => $wallet->transactions()->orderByDesc('created_at')->get(),
+            'sumIncoming' => $wallet->transactions()->where('amount', '>', 0)->sum('amount'),
+            'sumOutgoing' => $wallet->transactions()->where('amount', '<', 0)->sum('amount')
         ]);
     }
 
@@ -53,7 +51,8 @@ class WalletsController extends Controller
     public function rename(WalletAuthorizeIdNameRequest $authorizeRequest): RedirectResponse
     {
         ['id' => $id, 'name' => $name] = $authorizeRequest->validated();
-        Wallet::where(['id' => $id])->update(['name' => $name]);
+        $wallet = Wallet::find($id);
+        $wallet->update(['name' => $name]);
         return redirect('/dashboard');
     }
 
@@ -66,7 +65,8 @@ class WalletsController extends Controller
     public function delete(WalletAuthorizeIdRequest $authorizeRequest): RedirectResponse
     {
         $id = $authorizeRequest->validated()['id'];
-        Wallet::where(['id' => $id])->delete();
+        $wallet = Wallet::find($id);
+        $wallet->delete();
         return redirect('/dashboard');
     }
 }

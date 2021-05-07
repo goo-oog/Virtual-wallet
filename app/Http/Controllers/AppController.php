@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
-use App\Models\Wallet;
+use App\Models\User;
 use Auth;
 use Illuminate\View\View;
 
@@ -17,8 +17,9 @@ class AppController extends Controller
 
     public function dashboard(): View
     {
+        $user = User::find(Auth::id());
         return view('dashboard', [
-            'wallets' => Wallet::where(['user_id' => Auth::id()])->get(),
+            'wallets' => $user->wallets()->get(),
             'transactions' => Transaction::all()
         ]);
     }
