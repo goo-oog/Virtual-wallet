@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Controllers\AppController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\WalletsController;
 use Illuminate\Support\Facades\Route;
@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AppController::class, 'home']);
+Route::view('/', 'welcome');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AppController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 
     Route::prefix('wallet')->group(function () {
-        Route::get('', [WalletsController::class, 'show']);
+        Route::get('{id}', [WalletsController::class, 'show']);
         Route::post('create', [WalletsController::class, 'create']);
         Route::patch('rename', [WalletsController::class, 'rename']);
         Route::delete('delete', [WalletsController::class, 'delete']);

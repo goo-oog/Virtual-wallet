@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WalletAuthorizeIdRequest;
 use App\Http\Requests\WalletAuthorizeIdNameRequest;
+use App\Http\Requests\WalletAuthorizeIdRoute;
 use App\Models\Wallet;
-use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class WalletsController extends Controller
 {
-    public function show(WalletAuthorizeIdRequest $authorizeRequest): View
+    /**
+     * Shows the list of all transactions of the current wallet
+     */
+    public function show(WalletAuthorizeIdRoute $authorizeRoute): View
     {
-        $id = $authorizeRequest->validated()['id'];
-        $wallet = Wallet::find($id);
+        $wallet = Wallet::find($authorizeRoute->route('id'));
         return view('wallet', [
             'wallet' => $wallet,
             'transactions' => $wallet->transactions()->orderByDesc('created_at')->get(),
@@ -25,11 +28,17 @@ class WalletsController extends Controller
         ]);
     }
 
+    /**
+     * Shows form to add a new wallet
+     */
     public function showCreateForm(): View
     {
         return view('wallet-create');
     }
 
+    /**
+     * Creates a new wallet
+     */
     public function create(Request $request): RedirectResponse
     {
         $request->validate([
@@ -42,12 +51,18 @@ class WalletsController extends Controller
         return redirect('/dashboard');
     }
 
+    /**
+     * Shows form to rename a wallet
+     */
     public function showRenameForm(WalletAuthorizeIdRequest $authorizeRequest): View
     {
         $id = $authorizeRequest->validated()['id'];
         return view('wallet-rename', ['wallet' => Wallet::find($id)]);
     }
 
+    /**
+     * Renames a wallet
+     */
     public function rename(WalletAuthorizeIdNameRequest $authorizeRequest): RedirectResponse
     {
         ['id' => $id, 'name' => $name] = $authorizeRequest->validated();
@@ -56,16 +71,23 @@ class WalletsController extends Controller
         return redirect('/dashboard');
     }
 
+    /**
+     * Shows form to delete a wallet
+     */
     public function showDeleteForm(WalletAuthorizeIdRequest $authorizeRequest): View
     {
         $id = $authorizeRequest->validated()['id'];
         return view('wallet-delete', ['wallet' => Wallet::find($id)]);
     }
 
+    /**
+     * Deletes a wallet and all transactions associated with it
+     */
     public function delete(WalletAuthorizeIdRequest $authorizeRequest): RedirectResponse
     {
         $id = $authorizeRequest->validated()['id'];
         $wallet = Wallet::find($id);
+        $wallet->transactions()->delete();
         $wallet->delete();
         return redirect('/dashboard');
     }

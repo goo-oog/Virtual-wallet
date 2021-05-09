@@ -19,13 +19,13 @@
                     <h2 class="text-gray-800 font-semibold text-xl pb-3">Virtual wallets</h2>
                     @foreach($wallets as $wallet)
                         <div class="border-t border-gray-400 pb-3 hover:bg-yellow-50">
-                            <a href="/wallet?id={{$wallet->id}}">
+                            <a href="/wallet/{{$wallet->id}}">
                                 <div class="flex p-2 space-x-4 xs:flex-wrap sm:flex-nowrap xs:justify-end sm:justify-between">
                                     <p class="xs:w-full sm:w-96">{{$wallet->name}}</p>
                                     <div class="flex space-x-4 items-end">
                                         <p class="w-32 text-right
-                                    {{$transactions->where('wallet_id', $wallet->id)->sum('amount')>=0?'text-green-500':'text-red-500'}}">
-                                            {{sprintf('%0.2f €',$transactions->where('wallet_id', $wallet->id)->sum('amount')/100)}}
+                                    {{$wallet->transactions()->sum('amount')>=0?'text-green-500':'text-red-500'}}">
+                                            {{sprintf('%0.2f €',$wallet->transactions()->sum('amount')/100)}}
                                         </p>
                                         <form method="get" action="/wallet/show-form/rename">
                                             @csrf

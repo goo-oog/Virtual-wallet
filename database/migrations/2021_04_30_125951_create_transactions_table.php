@@ -16,11 +16,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wallet_id')->constrained()->onDelete('cascade');
+            $table->foreignId('wallet_id')->constrained();
             $table->string('description');
             $table->bigInteger('amount');
             $table->boolean('is_fraudulent')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

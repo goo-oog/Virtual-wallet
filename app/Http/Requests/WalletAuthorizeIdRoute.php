@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class WalletAuthorizeIdNameRequest extends FormRequest
+class WalletAuthorizeIdRoute extends FormRequest
 {
     /**
      * Determine if the user owns the wallet with this id
@@ -18,7 +18,7 @@ class WalletAuthorizeIdNameRequest extends FormRequest
     public function authorize(Request $request)
     {
         $user = User::find(Auth::id());
-        $wallet = $user->wallets()->findOrFail($request->input('id'));
+        $wallet = $user->wallets()->findOrFail($request->route('id'));
         return $wallet->exists();
     }
 
@@ -30,8 +30,7 @@ class WalletAuthorizeIdNameRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
-            'name' => 'required', 'max:32'
+            //
         ];
     }
 }

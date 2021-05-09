@@ -4,14 +4,14 @@ declare(strict_types=1);
 namespace App\Http\Requests;
 
 use App\Models\User;
-use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WalletAuthorizeIdRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the user owns the wallet with this id
      *
      * @return bool
      */
@@ -20,11 +20,6 @@ class WalletAuthorizeIdRequest extends FormRequest
         $user = User::find(Auth::id());
         $wallet = $user->wallets()->findOrFail($request->input('id'));
         return $wallet->exists();
-//        if (Wallet::where('id', $request->input('id'))
-//            ->where('user_id', Auth::id())->exists()) {
-//            return true;
-//        }
-//        return false;
     }
 
     /**

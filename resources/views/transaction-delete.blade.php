@@ -20,7 +20,7 @@
                         <br>
                         <input type="submit" value="Delete"
                                class="w-24 h-8 bg-white text-base hover:border-red-500 hover:text-red-500 px-2 border rounded border-gray-400">
-                        <a href="/wallet?id={{$wallet->id}}"> or cancel</a>
+                        <a href="/wallet/{{$wallet->id}}"> or cancel</a>
                     </form>
                 </div>
             </div>
