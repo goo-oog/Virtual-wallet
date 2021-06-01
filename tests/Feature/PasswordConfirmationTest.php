@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -9,7 +10,6 @@ use Tests\TestCase;
 class PasswordConfirmationTest extends TestCase
 {
     use RefreshDatabase;
-    protected $seed = true;
 
     public function test_confirm_password_screen_can_be_rendered()
     {

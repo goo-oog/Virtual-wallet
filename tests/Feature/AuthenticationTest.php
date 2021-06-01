@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -10,7 +11,6 @@ use Tests\TestCase;
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
-    protected $seed = true;
 
     public function test_login_screen_can_be_rendered()
     {

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -11,7 +12,6 @@ use Tests\TestCase;
 class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;
-    protected $seed = true;
 
     public function test_reset_password_link_screen_can_be_rendered()
     {

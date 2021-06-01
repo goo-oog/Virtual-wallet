@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Feature;
 
@@ -13,7 +14,6 @@ use Tests\TestCase;
 class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
-    protected $seed = true;
 
     public function test_email_verification_screen_can_be_rendered()
     {
@@ -43,8 +43,8 @@ class EmailVerificationTest extends TestCase
         $response = $this->actingAs($user)->get($verificationUrl);
 
         Event::assertDispatched(Verified::class);
-        $this->assertTrue($user->fresh()->hasVerifiedEmail());
-        $response->assertRedirect(RouteServiceProvider::HOME.'?verified=1');
+        self::assertTrue($user->fresh()->hasVerifiedEmail());
+        $response->assertRedirect(RouteServiceProvider::HOME . '?verified=1');
     }
 
     public function test_email_is_not_verified_with_invalid_hash()
@@ -61,6 +61,6 @@ class EmailVerificationTest extends TestCase
 
         $this->actingAs($user)->get($verificationUrl);
 
-        $this->assertFalse($user->fresh()->hasVerifiedEmail());
+        self::assertFalse($user->fresh()->hasVerifiedEmail());
     }
 }
